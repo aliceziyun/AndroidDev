@@ -71,3 +71,27 @@ val fragmentManager = supportFragmentManager
     }
 ```
 
+
+
+#### Hide
+
+只初始化一次 Fragment，后续切换时通过 `hide()` 和 `show()`实现，避免视图重复加载。
+
+##### 实例 在显示Fragment时加载数据
+
+通过重载`onHiddenChanged()`方法，在Fragment显示状态变化时操作Fragment
+
+```kotlin
+override fun onHiddenChanged(hidden: Boolean) {
+    super.onHiddenChanged(hidden)
+    if (!hidden) {
+        // Fragment 显示时加载数据
+        loadDataAndUpdateUI()
+    }
+}
+```
+
+
+
+#### 监听Activity
+
